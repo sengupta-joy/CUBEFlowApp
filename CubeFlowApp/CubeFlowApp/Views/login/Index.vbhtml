@@ -14,9 +14,12 @@ End Code
     <script type="text/javascript">
         $(document).ready(function () {
             $("#btnLogin").click(function () {
-                var url = "/login/get";
+                var url = "http://localhost:61636/api/login";
                 var uid = $("#txtUser").val();
                 var pass = $("#txtPass").val();
+
+                uid = "AUBUSR190690000W";
+                pass = "123456";
 
                 $("#lblMsg").text("waiting for server..");
 
