@@ -5,6 +5,7 @@ Namespace Controllers
         Inherits Controller
 
         ' GET: login
+        <AllowAnonymous>
         Function Index() As ActionResult
             Return View()
         End Function

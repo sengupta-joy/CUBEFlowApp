@@ -147,6 +147,8 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\ApplicationConstant.vb" />
+    <Compile Include="App_Code\CustomAuthentication.vb" />
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
