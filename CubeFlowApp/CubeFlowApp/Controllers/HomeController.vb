@@ -2,7 +2,7 @@
     Inherits System.Web.Mvc.Controller
 
     Function Index() As ActionResult
-        Session(ApplicationConstant.APIKey) = Request.QueryString.GetValues("key")(0)
+        Session(ApplicationConstant.APIKey) = Request.QueryString("key")
 
 
         Return View()
