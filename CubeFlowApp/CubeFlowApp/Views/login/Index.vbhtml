@@ -10,11 +10,15 @@ End Code
     <title>Login</title>
     @Styles.Render("~/Content/login")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/layout")
+
 
     <script type="text/javascript">
         $(document).ready(function () {
+
             $("#btnLogin").click(function () {
-                var url = "http://localhost:61636/api/login";
+                var url = getCookie("APIUrl")+ "login";
+               
                 var uid = $("#txtUser").val();
                 var pass = $("#txtPass").val();
 
@@ -39,11 +43,12 @@ End Code
                             if (result.Tocken == "") {
                                 $("#lblMsg").text("login failed");
                             } else {
+                                setCookie('APIKey', result.Tocken);
                                 $(location).attr("href", "../home/index?key=" + result.Tocken);
                             }
                         }
-                        
-                        
+
+
                     },
                     error: function (error) {
                         //console.log(error);

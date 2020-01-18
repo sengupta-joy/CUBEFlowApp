@@ -4,8 +4,8 @@ Public Module BundleConfig
     ' For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
     Public Sub RegisterBundles(ByVal bundles As BundleCollection)
 
-        'bundles.Add(New ScriptBundle("~/bundles/jquery").Include(
-        '            "~/Scripts/jquery-{version}.js"))
+        bundles.Add(New ScriptBundle("~/bundles/jquery").Include(
+                    "~/Scripts/jquery-3.3.1.min.js"))
 
         'bundles.Add(New ScriptBundle("~/bundles/jqueryval").Include(
         '            "~/Scripts/jquery.validate*"))
@@ -37,6 +37,7 @@ Public Module BundleConfig
         "~/Content/google_fonts.css"))
 
         bundles.Add(New ScriptBundle("~/bundles/jsplugin").Include(
+                "~/Scripts/jquery-3.3.1.min.js",
                 "~/plugins/jquery-ui/jquery-ui.min.js",
                 "~/plugins/bootstrap/js/bootstrap.bundle.min.js",
                 "~/plugins/chart.js/Chart.min.js",
@@ -53,6 +54,10 @@ Public Module BundleConfig
                 "~/dist/js/pages/dashboard.js",
                 "~/dist/js/demo.js"
         ))
+
+        bundles.Add(New ScriptBundle("~/bundles/layout").Include(
+            "~/Scripts/layout.js"
+            ))
 
     End Sub
 End Module

@@ -6,6 +6,7 @@ Public Class CustomAuthentication : Implements System.Web.Mvc.IAuthorizationFilt
 
     Public Sub OnAuthorization(filterContext As AuthorizationContext) Implements IAuthorizationFilter.OnAuthorization
         Dim anonymAttr As New System.Web.Mvc.AllowAnonymousAttribute()
+        Dim resp As HttpResponse = HttpContext.Current.Response
 
         Dim ActionAttrs = filterContext.ActionDescriptor.GetCustomAttributes(False)
 
@@ -17,10 +18,12 @@ Public Class CustomAuthentication : Implements System.Web.Mvc.IAuthorizationFilt
 
 
         If Not authorized(filterContext.ActionDescriptor.ActionName, filterContext.Controller.ControllerContext.Controller.ToString()) Then
-            HttpContext.Current.Response.Clear()
-            HttpContext.Current.Response.Write("Unauthorized!")
-            HttpContext.Current.Response.StatusCode = HttpStatusCode.Unauthorized
-            HttpContext.Current.Response.End()
+            'resp.Clear()
+            'resp.Write("Unauthorized!")
+            'resp.StatusCode = HttpStatusCode.Unauthorized
+            'resp.End()
+            resp.ClearContent()
+            resp.Write("<script language='javascript'>self.location='../login';</script>")
         End If
 
 
@@ -29,6 +32,14 @@ Public Class CustomAuthentication : Implements System.Web.Mvc.IAuthorizationFilt
     Private Function authorized(actionName As String, controller As String) As Boolean
         'check if session is valid
         'check if user have access
+
+        If HttpContext.Current.Session(ApplicationConstant.APIKey) Is Nothing Then
+            Return False
+            If String.IsNullOrEmpty(HttpContext.Current.Session(ApplicationConstant.APIKey)) Then
+                Return False
+            End If
+        End If
+
         Return True
     End Function
 End Class
