@@ -149,12 +149,14 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\ApiCaller.vb" />
     <Compile Include="App_Code\ApplicationConstant.vb" />
     <Compile Include="App_Code\CustomAuthentication.vb" />
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="Controllers\loginController.vb" />
+    <Compile Include="Controllers\menuController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1908,6 +1910,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\layout.js" />
     <Content Include="Views\login\Index.vbhtml" />
+    <Content Include="Views\menu\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

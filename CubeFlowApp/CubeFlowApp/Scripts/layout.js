@@ -27,8 +27,15 @@ function getCookie(name) {
     return null;
 }
 
-var x;
+function getParentMenu(menuText) {
+    var str = "<li class='nav-item has-treeview'><a href = '#' class='nav-link' ><i class='nav-icon fas fa-edit'></i><p>" + menuText + "<i class='fas fa-angle-left right'></i></p></a ><ul class='nav nav - treeview subMenu'></ul></li >";
+    return str;
+}
 
+function getChildMenu(Name, Address) {
+    var str = "<li class='nav-item'><a href='" + Address + "' class='nav-link'><i class='far fa-circle nav-icon'></i><p>" + Name + "</p></a></li>";
+    return str;
+}
 getMenus = function () {
     var url = getCookie("APIUrl")+"/menu";
     
@@ -40,20 +47,23 @@ getMenus = function () {
         contentType: 'application/json; charset=utf-8',
         beforeSend: function (xhr) { xhr.setRequestHeader('token', getCookie("APIKey")); },
         success: function (result) {
-            x=(result);
-            //$(".nav-pills.nav-sidebar").children().remove();
+            x = (result);
+            $(".nav-pills.nav-sidebar").children().remove();
             $(result).each(function (k, v) {
-                if (v.Address == "" && v.Parent=="") {
-                    var item = "<li class=nav-item><a href='pages/widgets.html' class='nav-link'><i class='nav-icon fas fa-th'></i><p>" + v.Name + "<i class='right fas fa-angle - left'></i></p></a></li>";
+                if (v.Address == "" && v.Parent == "") {
+                    var item = getParentMenu(v.Name);
                     var menuItem = $(".nav-pills.nav-sidebar").append(item);
                     var subMenu = $(result).filter(function () { return this.Parent == v.ID });
                     if ($(subMenu).length > 0) {
-                        $(menuItem.children().last()).attr("class", "nav-item has-treeview")
-                        console.log(menuItem);
+                        var childMenu = $($(item).children("ul.subMenu"));
+                        $(subMenu).each(function (i, j) {
+                            var childItem = getChildMenu(j.Name, j.Address);
+                            $(childMenu).append("<li>abcd</li>");
+                        });
                     }
                 }
-                
-               
+
+
             });
         },
         error: function (error) {
