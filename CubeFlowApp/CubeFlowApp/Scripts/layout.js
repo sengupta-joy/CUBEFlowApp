@@ -65,9 +65,11 @@ getMenus = function () {
 
 function loadMenu() {
     var result = JSON.parse(sessionStorage.getItem("menus"));
+    
     $(".nav-pills.nav-sidebar").children().remove();
     $(".nav-pills.nav-sidebar").append("<li class='nav-header'>Menus</li>");
     $(result).filter(function () { return this.MenuType == 0 }).each(function (k, v) {
+        console.log(result.length);
         if (v.Address == "" && v.Parent == "") {
             var item = getParentMenu(v.Name, v.ID);
             var menuItem = $(".nav-pills.nav-sidebar").append(item);
