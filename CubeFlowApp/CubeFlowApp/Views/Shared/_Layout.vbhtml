@@ -33,6 +33,12 @@
     @Scripts.Render("~/bundles/jsplugin")
     @Scripts.Render("~/bundles/layout")
 
+    <style type="text/css">
+        .menu-grp {
+            border-bottom-color: #373833;
+            border-bottom: 1pt solid;
+        }
+    </style>
     
 
 </head>

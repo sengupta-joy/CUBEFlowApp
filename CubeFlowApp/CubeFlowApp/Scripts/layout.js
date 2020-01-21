@@ -67,7 +67,7 @@ function loadMenu() {
     var result = JSON.parse(sessionStorage.getItem("menus"));
     
     $(".nav-pills.nav-sidebar").children().remove();
-    $(".nav-pills.nav-sidebar").append("<li class='nav-header'>Menus</li>");
+    $(".nav-pills.nav-sidebar").append("<li class='nav-header menu-grp'>Menus</li>");
     $(result).filter(function () { return this.MenuType == 0 }).each(function (k, v) {
         console.log(result.length);
         if (v.Address == "" && v.Parent == "") {
@@ -75,7 +75,7 @@ function loadMenu() {
             var menuItem = $(".nav-pills.nav-sidebar").append(item);
         }
     });
-    $(".nav-pills.nav-sidebar").append("<li class='nav-header'>Plugins</li>");
+    $(".nav-pills.nav-sidebar").append("<li class='nav-header  menu-grp'>Plugins</li>");
     $(result).filter(function () { return this.MenuType == 1 }).each(function (k, v) {
         if (v.Address == "" && v.Parent == "") {
             var item = getParentMenu(v.Name, v.ID);
