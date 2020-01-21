@@ -10,34 +10,41 @@ End Code
             <section class="col-lg-12 connectedSortable">
                 <!-- Custom tabs (Charts with tabs)-->
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <i class="fas fa-chart-pie mr-1"></i>
-                            Sales
-                        </h3>
-                        <div class="card-tools">
-                            <ul class="nav nav-pills ml-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                    <div class="panel with-nav-tabs panel-default">
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs">
+                                <li class="active nav-item"><a class="nav-link" href="#tab1default" data-toggle="tab">By name</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#tab2default" data-toggle="tab">By role</a></li>
+                                <li class="nav-item dropdown">
+                                    <a  class="nav-link" href="#" data-toggle="dropdown">More<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li class="nav-item"><a class="nav-link" href="#tab4default" data-toggle="tab">By depertment</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#tab5default" data-toggle="tab">By branch</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#tab6default" data-toggle="tab">By designation</a></li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
-                    </div><!-- /.card-header -->
-                    <div class="card-body">
-                        <div class="tab-content p-0">
-                            <!-- Morris chart - Sales -->
-                            <div class="chart tab-pane active" id="revenue-chart"
-                                 style="position: relative; height: 300px;">
-                                <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                            </div>
-                            <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                                <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="tab1default">
+                                    <div style="display:table-row;padding:5px !important;">
+                                        <span>A</span>
+                                        <span>B</span>
+                                        <span>C</span>
+                                        <span>D</span>
+                                        <span>E</span>
+                                        <span>F</span>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab2default">users by role</div>
+
+                                <div class="tab-pane fade" id="tab4default">users by depertment</div>
+                                <div class="tab-pane fade" id="tab5default">users byy branch</div>
+                                <div class="tab-pane fade" id="tab6default">users byy branch</div>
                             </div>
                         </div>
-                    </div><!-- /.card-body -->
+                    </div>
                 </div>
                 <!-- /.card -->
                 <!-- TO DO List -->
