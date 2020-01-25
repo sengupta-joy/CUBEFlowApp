@@ -59,6 +59,10 @@ Public Module BundleConfig
             "~/Scripts/layout.js"
             ))
 
+        bundles.Add(New ScriptBundle("~/bundles/Cookie").Include(
+           "~/Scripts/CookieHelper.js"
+           ))
+
     End Sub
 End Module
 

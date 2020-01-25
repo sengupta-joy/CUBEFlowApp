@@ -1,7 +1,22 @@
 ﻿@Code
     ViewData("Title") = "Index"
     Layout = "~/Views/Shared/_Layout.vbhtml"
+    Dim data = ViewData("userObj")
 End Code
+
+<style type="text/css">
+    .user-block-x {
+        margin: 5px;
+        width: 150px;
+        box-shadow:   #e9e7e7 1px 2px 8px 1px
+    }
+        .user-block-x img {
+            height:50px;
+            width:55px;
+            border-radius:50%;
+        }
+
+</style>
 
 <section class="content">
     <div class="container-fluid">
@@ -28,151 +43,158 @@ End Code
                         <div class="panel-body">
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tab1default">
-                                    <div style="display:table-row;padding:5px !important;">
-                                        <span>A</span>
-                                        <span>B</span>
-                                        <span>C</span>
-                                        <span>D</span>
-                                        <span>E</span>
-                                        <span>F</span>
+                                    @For Each item In data
+                                    @<div class="user-block user-block-x" >
+                                         <table>
+                                             <tr>
+                                                 <td><img src="~/img/userImg/@(item.key).jpg" onerror="this.src='/img/default.png" /> </td>
+                                             </tr>
+                                             <tr>
+                                                 <td>
+                                                     <input type="hidden" value="@item.key"/>
+                                                    @item.value
+                                                 </td>
+                                             </tr>
+                                         </table>
                                     </div>
+                                    Next
                                 </div>
-                                <div class="tab-pane fade" id="tab2default">users by role</div>
+                                <div Class="tab-pane fade" id="tab2default">users by role</div>
 
-                                <div class="tab-pane fade" id="tab4default">users by depertment</div>
-                                <div class="tab-pane fade" id="tab5default">users byy branch</div>
-                                <div class="tab-pane fade" id="tab6default">users byy branch</div>
+                                <div Class="tab-pane fade" id="tab4default">users by depertment</div>
+                                <div Class="tab-pane fade" id="tab5default">users byy branch</div>
+                                <div Class="tab-pane fade" id="tab6default">users byy branch</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.card -->
                 <!-- TO DO List -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <i class="ion ion-clipboard mr-1"></i>
+                <div Class="card">
+                    <div Class="card-header">
+                        <h3 Class="card-title">
+                            <i Class="ion ion-clipboard mr-1"></i>
                             To Do List
                         </h3>
-                        <div class="card-tools">
-                            <ul class="pagination pagination-sm">
-                                <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
+                        <div Class="card-tools">
+                            <ul Class="pagination pagination-sm">
+                                <li Class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                                <li Class="page-item"><a href="#" class="page-link">1</a></li>
+                                <li Class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li Class="page-item"><a href="#" class="page-link">3</a></li>
+                                <li Class="page-item"><a href="#" class="page-link">&raquo;</a></li>
                             </ul>
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <ul class="todo-list" data-widget="todo-list">
+                    <div Class="card-body">
+                        <ul Class="todo-list" data-widget="todo-list">
                             <li>
                                 <!-- drag handle -->
-                                <span class="handle">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                    <i class="fas fa-ellipsis-v"></i>
+                                <span Class="handle">
+                                    <i Class="fas fa-ellipsis-v"></i>
+                                    <i Class="fas fa-ellipsis-v"></i>
                                 </span>
                                 <!-- checkbox -->
-                                <div class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo1" id="todoCheck1">
-                                    <label for="todoCheck1"></label>
+                                <div Class="icheck-primary d-inline ml-2">
+                                    <input type = "checkbox" value="" name="todo1" id="todoCheck1">
+                                    <Label for="todoCheck1"></label>
                                 </div>
                                 <!-- todo text -->
-                                <span class="text">Design a nice theme</span>
+                                <span Class="text">Design a nice theme</span>
                                 <!-- Emphasis label -->
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fas fa-edit"></i>
-                                    <i class="fas fa-trash-o"></i>
+                                <small Class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                                <!-- General tools such as edit Or delete-->
+                                <div Class="tools">
+                                    <i Class="fas fa-edit"></i>
+                                    <i Class="fas fa-trash-o"></i>
                                 </div>
                             </li>
                             <li>
-                                <span class="handle">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                    <i class="fas fa-ellipsis-v"></i>
+                                                                                                                                            <span Class="handle">
+                                    <i Class="fas fa-ellipsis-v"></i>
+                                    <i Class="fas fa-ellipsis-v"></i>
                                 </span>
-                                <div class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
-                                    <label for="todoCheck2"></label>
+                                <div Class="icheck-primary d-inline ml-2">
+                                    <input type = "checkbox" value="" name="todo2" id="todoCheck2" checked>
+                                    <Label for="todoCheck2"></label>
                                 </div>
-                                <span class="text">Make the theme responsive</span>
-                                <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
-                                <div class="tools">
-                                    <i class="fas fa-edit"></i>
-                                    <i class="fas fa-trash-o"></i>
+                                <span Class="text">Make the theme responsive</span>
+                                <small Class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
+                                <div Class="tools">
+                                    <i Class="fas fa-edit"></i>
+                                    <i Class="fas fa-trash-o"></i>
                                 </div>
                             </li>
                             <li>
-                                <span class="handle">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                    <i class="fas fa-ellipsis-v"></i>
+                                                                                                                                                                                <span Class="handle">
+                                    <i Class="fas fa-ellipsis-v"></i>
+                                    <i Class="fas fa-ellipsis-v"></i>
                                 </span>
-                                <div class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                                    <label for="todoCheck3"></label>
+                                <div Class="icheck-primary d-inline ml-2">
+                                    <input type = "checkbox" value="" name="todo3" id="todoCheck3">
+                                    <Label for="todoCheck3"></label>
                                 </div>
-                                <span class="text">Let theme shine like a star</span>
-                                <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
-                                <div class="tools">
-                                    <i class="fas fa-edit"></i>
-                                    <i class="fas fa-trash-o"></i>
+                                <span Class="text">Let theme shine Like a star</span>
+                                <small Class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
+                                <div Class="tools">
+                                    <i Class="fas fa-edit"></i>
+                                    <i Class="fas fa-trash-o"></i>
                                 </div>
                             </li>
                             <li>
-                                <span class="handle">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                    <i class="fas fa-ellipsis-v"></i>
+                                                                                                                                                                                                                    <span Class="handle">
+                                    <i Class="fas fa-ellipsis-v"></i>
+                                    <i Class="fas fa-ellipsis-v"></i>
                                 </span>
-                                <div class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                                    <label for="todoCheck4"></label>
+                                <div Class="icheck-primary d-inline ml-2">
+                                    <input type = "checkbox" value="" name="todo4" id="todoCheck4">
+                                    <Label for="todoCheck4"></label>
                                 </div>
-                                <span class="text">Let theme shine like a star</span>
-                                <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
-                                <div class="tools">
-                                    <i class="fas fa-edit"></i>
-                                    <i class="fas fa-trash-o"></i>
+                                <span Class="text">Let theme shine Like a star</span>
+                                <small Class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
+                                <div Class="tools">
+                                    <i Class="fas fa-edit"></i>
+                                    <i Class="fas fa-trash-o"></i>
                                 </div>
                             </li>
                             <li>
-                                <span class="handle">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                    <i class="fas fa-ellipsis-v"></i>
+                                                                                                                                                                                                                                                        <span Class="handle">
+                                    <i Class="fas fa-ellipsis-v"></i>
+                                    <i Class="fas fa-ellipsis-v"></i>
                                 </span>
-                                <div class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                                    <label for="todoCheck5"></label>
+                                <div Class="icheck-primary d-inline ml-2">
+                                    <input type = "checkbox" value="" name="todo5" id="todoCheck5">
+                                    <Label for="todoCheck5"></label>
                                 </div>
-                                <span class="text">Check your messages and notifications</span>
-                                <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
-                                <div class="tools">
-                                    <i class="fas fa-edit"></i>
-                                    <i class="fas fa-trash-o"></i>
+                                <span Class="text">Check your messages And notifications</span>
+                                <small Class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
+                                <div Class="tools">
+                                    <i Class="fas fa-edit"></i>
+                                    <i Class="fas fa-trash-o"></i>
                                 </div>
                             </li>
                             <li>
-                                <span class="handle">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                    <i class="fas fa-ellipsis-v"></i>
+                                                                                                                                                                                                                                                                                            <span Class="handle">
+                                    <i Class="fas fa-ellipsis-v"></i>
+                                    <i Class="fas fa-ellipsis-v"></i>
                                 </span>
-                                <div class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                                    <label for="todoCheck6"></label>
+                                <div Class="icheck-primary d-inline ml-2">
+                                    <input type = "checkbox" value="" name="todo6" id="todoCheck6">
+                                    <Label for="todoCheck6"></label>
                                 </div>
-                                <span class="text">Let theme shine like a star</span>
-                                <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
-                                <div class="tools">
-                                    <i class="fas fa-edit"></i>
-                                    <i class="fas fa-trash-o"></i>
+                                <span Class="text">Let theme shine Like a star</span>
+                                <small Class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
+                                <div Class="tools">
+                                    <i Class="fas fa-edit"></i>
+                                    <i Class="fas fa-trash-o"></i>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer clearfix">
-                        <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add item</button>
+                    <div Class="card-footer clearfix">
+                        <Button type = "button" Class="btn btn-info float-right"><i Class="fas fa-plus"></i> Add item</button>
                     </div>
                 </div>
                 <!-- /.card -->

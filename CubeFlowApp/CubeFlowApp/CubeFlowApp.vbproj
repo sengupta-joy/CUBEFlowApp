@@ -278,6 +278,10 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <Content Include="img\default.png" />
+    <Content Include="img\userImg\AUBUSR190690000W.jpg" />
+    <Content Include="img\userImg\AUBUSR1906900013.jpg" />
+    <Content Include="img\userImg\AUBUSR1906900014.jpg" />
     <Content Include="plugins\.npmignore" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css.map" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css.map" />
@@ -1902,6 +1906,7 @@
     <Content Include="plugins\toastr\toastr.css" />
     <Content Include="plugins\toastr\toastr.min.css" />
     <Content Include="plugins\toastr\toastr.min.js" />
+    <Content Include="Scripts\CookieHelper.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />

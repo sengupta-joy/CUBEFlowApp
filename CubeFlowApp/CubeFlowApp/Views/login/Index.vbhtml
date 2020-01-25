@@ -10,7 +10,7 @@ End Code
     <title>Login</title>
     @Styles.Render("~/Content/login")
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/layout")
+    @Scripts.Render("~/bundles/Cookie")
 
 
     <script type="text/javascript">
