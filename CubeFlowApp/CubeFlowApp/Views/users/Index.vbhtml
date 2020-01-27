@@ -3,18 +3,26 @@
     Layout = "~/Views/Shared/_Layout.vbhtml"
     Dim UsersObj = ViewData("userObj")
     Dim alphabetObj = ViewData("alphabetObj")
+    Dim brnchObj As Dictionary(Of String, String) = ViewData("brnchObj")
+    Dim deptObj As Dictionary(Of String, String) = ViewData("deptObj")
+    Dim desigObj As Dictionary(Of String, String) = ViewData("desigObj")
 End Code
 
 <style type="text/css">
     .user-block-x {
         margin: 5px;
         width: 150px;
-        box-shadow:   #e9e7e7 1px 2px 8px 1px
+        box-shadow:   #e9e7e7 1px 2px 8px 1px;
+        font-size: 12px;
+        
     }
+        .user-block-x td{
+            vertical-align:top;
+        }
         .user-block-x img {
-            height:50px;
-            width:55px;
-            border-radius:50%;
+            height: 50px;
+            width: 55px;
+            border-radius: 50%;
         }
     .header-with-border {
         border-top: 5px solid #0d783d;
@@ -23,7 +31,7 @@ End Code
         /*width:98%;*/
     }
 </style>
-
+<script src="~/Scripts/users.js"></script>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -62,16 +70,20 @@ End Code
                                                  </span>
                                             Next
                                         </div>
+                                        <br />
                                         @For Each item In UsersObj
                                             @<div class="user-block user-block-x">
-                                                <table>
+                                                <table border="0">
                                                     <tr>
-                                                        <td><img src="~/img/userImg/@(item.key).jpg" onerror="this.src='/img/default.png" /> </td>
+                                                        <td rowspan="2"><img src="~/img/userImg/@(item.key).jpg" onerror="loadDefaultImg(this);" /> </td>
+                                                        <td>
+                                                            <input type="hidden" id="hdnID" value="@item.key" />
+                                                            @item.value
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <input type="hidden" value="@item.key" />
-                                                            @item.value
+                                                            
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -97,122 +109,50 @@ End Code
                             <i Class="ion ion-clipboard mr-1"></i>
                             User details
                         </h3>
-                        <div Class="card-tools">
-                            <ul Class="pagination pagination-sm">
-                                <li Class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                                <li Class="page-item"><a href="#" class="page-link">1</a></li>
-                                <li Class="page-item"><a href="#" class="page-link">2</a></li>
-                                <li Class="page-item"><a href="#" class="page-link">3</a></li>
-                                <li Class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                            </ul>
-                        </div>
+                        
                     </div>
                     <!-- /.card-header -->
                     <div Class="card-body">
-                        <ul Class="todo-list" data-widget="todo-list">
-                            @*<li>
-                                <!-- drag handle -->
-                                <span Class="handle">
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                </span>
-                                <!-- checkbox -->
-                                <div Class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo1" id="todoCheck1">
-                                    <Label for="todoCheck1"></Label>
-                                </div>
-                                <!-- todo text -->
-                                <span Class="text">Design a nice theme</span>
-                                <!-- Emphasis label -->
-                                <small Class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
-                                <!-- General tools such as edit Or delete-->
-                                <div Class="tools">
-                                    <i Class="fas fa-edit"></i>
-                                    <i Class="fas fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span Class="handle">
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                </span>
-                                <div Class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
-                                    <Label for="todoCheck2"></Label>
-                                </div>
-                                <span Class="text">Make the theme responsive</span>
-                                <small Class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
-                                <div Class="tools">
-                                    <i Class="fas fa-edit"></i>
-                                    <i Class="fas fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span Class="handle">
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                </span>
-                                <div Class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                                    <Label for="todoCheck3"></Label>
-                                </div>
-                                <span Class="text">Let theme shine Like a star</span>
-                                <small Class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
-                                <div Class="tools">
-                                    <i Class="fas fa-edit"></i>
-                                    <i Class="fas fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span Class="handle">
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                </span>
-                                <div Class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                                    <Label for="todoCheck4"></Label>
-                                </div>
-                                <span Class="text">Let theme shine Like a star</span>
-                                <small Class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
-                                <div Class="tools">
-                                    <i Class="fas fa-edit"></i>
-                                    <i Class="fas fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span Class="handle">
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                </span>
-                                <div Class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                                    <Label for="todoCheck5"></Label>
-                                </div>
-                                <span Class="text">Check your messages And notifications</span>
-                                <small Class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
-                                <div Class="tools">
-                                    <i Class="fas fa-edit"></i>
-                                    <i Class="fas fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span Class="handle">
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                    <i Class="fas fa-ellipsis-v"></i>
-                                </span>
-                                <div Class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                                    <Label for="todoCheck6"></Label>
-                                </div>
-                                <span Class="text">Let theme shine Like a star</span>
-                                <small Class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
-                                <div Class="tools">
-                                    <i Class="fas fa-edit"></i>
-                                    <i Class="fas fa-trash-o"></i>
-                                </div>
-                            </li>*@
-                        </ul>
-                        
+                        <div class="row">
+                            <section class="col-lg-3">
+                                Name
+                            </section>
+                            <section class="col-lg-9">
+                                @Html.TextBox("txtName", "User name")
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section class="col-lg-3">
+                                Email
+                            </section>
+                            <section class="col-lg-9">
+                                @Html.TextBox("txtEmail", "User name")
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section class="col-lg-3">
+                                Branch
+                            </section>
+                            <section class="col-lg-9">
+                                @Html.DropDownList("ddlBrnch", New SelectList(brnchObj, "Key", "Value"), "- Please select your branch -")
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section class="col-lg-3">
+                                Depertment
+                            </section>
+                            <section class="col-lg-9">
+                                @Html.DropDownList("ddlDept", New SelectList(deptObj, "Key", "Value"), "- Please select your depertment -")
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section class="col-lg-3">
+                                Designation
+                            </section>
+                            <section class="col-lg-9">
+                                @Html.DropDownList("ddlDesig", New SelectList(desigObj, "Key", "Value"), "- Please select your designation -")
+                            </section>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <div Class="card-footer clearfix">
