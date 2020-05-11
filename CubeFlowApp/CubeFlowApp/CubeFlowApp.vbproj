@@ -1915,6 +1915,8 @@
     <Content Include="Scripts\users.js" />
     <Content Include="Views\login\Index.vbhtml" />
     <Content Include="Views\users\Index.vbhtml" />
+    <Content Include="Views\users\userDetails.vbhtml" />
+    <Content Include="Views\Shared\_userPertialView.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

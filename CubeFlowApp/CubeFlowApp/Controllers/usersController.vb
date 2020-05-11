@@ -42,6 +42,26 @@ Namespace Controllers
             Return View(ViewData)
         End Function
 
+        Function userDetails(id As String) As ActionResult
+            Dim param As New Dictionary(Of String, String)
+            Dim userObj
+
+            Dim anon = New With {.id = "Peter"}
+
+
+            Try
+
+                param.Add("id", id)
+                userObj = System.Web.Helpers.Json.Decode(ApiCaller.GetRequest("users", "GetValue", param))
+
+                ViewBag("userObj") = userObj
+                Return View(ViewBag)
+            Catch ex As Exception
+
+            End Try
+
+        End Function
+
 
     End Class
 End Namespace

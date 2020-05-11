@@ -14,11 +14,26 @@ End Code
         width: 150px;
         box-shadow:   #e9e7e7 1px 2px 8px 1px;
         font-size: 12px;
-        
+        cursor:pointer;
     }
-        .user-block-x td{
-            vertical-align:top;
+        .user-block-x:hover {
+            box-shadow: #ccc6c6 1px 2px 8px 1px;
         }
+
+        .user-block-x span.usr-Name {
+            color:#808080;
+            font-family:Tahoma;
+            font-size:10pt;
+        }
+        .user-block-x .userDesig, .user-block-x .userDept {
+            color: #808080;
+            font-family: Tahoma;
+            font-size: 8pt;
+        }
+
+    .user-block-x td {
+        vertical-align: top;
+    }
         .user-block-x img {
             height: 50px;
             width: 55px;
@@ -72,22 +87,9 @@ End Code
                                         </div>
                                         <br />
                                         @For Each item In UsersObj
-                                            @<div class="user-block user-block-x">
-                                                <table border="0">
-                                                    <tr>
-                                                        <td rowspan="2"><img src="~/img/userImg/@(item.key).jpg" onerror="loadDefaultImg(this);" /> </td>
-                                                        <td>
-                                                            <input type="hidden" id="hdnID" value="@item.key" />
-                                                            @item.value
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
+                                            @*Dim obj = New With {.id = item}
+                                            @Html.Action("userDetails", "users", New With {.id = item})*@
+                                            @Html.Partial("_userPertialView", item)
                                         Next
                                     </div>
                                     <div Class="tab-pane fade" id="tab2default">users by role</div>
@@ -112,7 +114,7 @@ End Code
                         
                     </div>
                     <!-- /.card-header -->
-                    <div Class="card-body">
+                    <div Class="card-body user-detail">
                         <div class="row">
                             <section class="col-lg-3">
                                 Name
@@ -157,6 +159,35 @@ End Code
                     <!-- /.card-body -->
                     <div Class="card-footer clearfix">
                         <Button type="button" Class="btn btn-info float-right"><i Class="fas fa-plus"></i> Add item</Button>
+                    </div>
+                </div>
+                <div Class="card header-with-border">
+                    <div Class="card-header">
+                        <h3 Class="card-title">
+                            <i Class="ion ion-clipboard mr-1"></i>
+                            Hgherarchy
+                        </h3>
+                    </div>
+                    <div Class="card-body">
+                        <div class="panel with-nav-tabs panel-default">
+                            <div class="panel-heading">
+                                <ul class="nav nav-tabs">
+                                    <li class="active nav-item"><a class="nav-link" href="#tabContPrntUser" data-toggle="tab">By name</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#tabContSubUser" data-toggle="tab">Subordinates</a></li>
+                                </ul>
+                            </div>
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="tabContPrntUser">
+                                        
+                                    </div>
+                                    <div Class="tab-pane fade" id="tabContSubUser">
+
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
