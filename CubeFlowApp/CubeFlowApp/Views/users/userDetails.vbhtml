@@ -1,25 +1,141 @@
 ﻿
 @Code
     Layout = Nothing
-    Dim UsersObj = ViewData("userObj")
-    Dim i = 0
+    Dim keys = ViewData.Keys
+    Dim userImg =ViewData("userid").ToString()
+    Dim i = keys.Count
 End Code
 
+<div class="row">
 
-<div class="user-block user-block-x" title="@UsersObj.ID">
-        <table border="0">
-            <tr>
-                <td rowspan="3"><img src="~/img/userImg/@(UsersObj.ID).jpg" onerror="loadDefaultImg(this);" /> </td>
-                <td>
-                    <input type="hidden" id="hdnID" value="@UsersObj.ID" />
-                    <span class="usr-Name">@UsersObj.Name</span>
-                </td>
-            </tr>
-            <tr>
-                <td><div class="userDesig"></div></td>
-            </tr>
-            <tr>
-                <td><div class="userDept"></div></td>
-            </tr>
-        </table>
+    <img src="~/img/userImg/@(userImg).jpg" height="100" onerror="loadDefaultImg(this);" />
+    @ViewData("name").ToString()
+
+    <div Class="card header-with-border">
+        <div Class="card-header">
+            <h3 Class="card-title">
+                <i Class="ion ion-clipboard mr-1"></i>
+                About
+            </h3>
+
+        </div>
+        <!-- /.card-header -->
+        <div Class="card-body user-detail">
+            <table>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("about").ToString()</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("userid").ToString()</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("email").ToString()</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("phone").ToString()</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Extn-</td>
+                </tr>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div Class="card-footer clearfix">
+
+        </div>
     </div>
+
+    <div Class="card header-with-border">
+        <div Class="card-header">
+            <h3 Class="card-title">
+                <i Class="ion ion-clipboard mr-1"></i>
+                Reporting to
+            </h3>
+
+        </div>
+        <!-- /.card-header -->
+        <div Class="card-body user-detail">
+            <table>
+                <tr>
+                    <td></td>
+                    <td><img height="50" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("boss").ToString()</td>
+                </tr>
+
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div Class="card-footer clearfix">
+        </div>
+    </div>
+
+    <div Class="card header-with-border">
+        <div Class="card-header">
+            <h3 Class="card-title">
+                <i Class="ion ion-clipboard mr-1"></i>
+                Work
+            </h3>
+
+        </div>
+        <!-- /.card-header -->
+        <div Class="card-body user-detail">
+            <table>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("desig").ToString()</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("dept").ToString()</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("branch").ToString()</td>
+                </tr>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div Class="card-footer clearfix">
+
+        </div>
+    </div>
+
+
+    <div Class="card header-with-border">
+        <div Class="card-header">
+            <h3 Class="card-title">
+                <i Class="ion ion-clipboard mr-1"></i>
+                Personal
+            </h3>
+
+        </div>
+        <!-- /.card-header -->
+        <div Class="card-body user-detail">
+            <table>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("address").ToString()</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("city").ToString()</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@ViewData("country").ToString()</td>
+                </tr>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div Class="card-footer clearfix">
+        </div>
+    </div>
+</div>

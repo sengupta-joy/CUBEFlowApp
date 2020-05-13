@@ -87,8 +87,6 @@ End Code
                                         </div>
                                         <br />
                                         @For Each item In UsersObj
-                                            @*Dim obj = New With {.id = item}
-                                            @Html.Action("userDetails", "users", New With {.id = item})*@
                                             @Html.Partial("_userPertialView", item)
                                         Next
                                     </div>
@@ -115,46 +113,8 @@ End Code
                     </div>
                     <!-- /.card-header -->
                     <div Class="card-body user-detail">
-                        <div class="row">
-                            <section class="col-lg-3">
-                                Name
-                            </section>
-                            <section class="col-lg-9">
-                                @Html.TextBox("txtName", "User name")
-                            </section>
-                        </div>
-                        <div class="row">
-                            <section class="col-lg-3">
-                                Email
-                            </section>
-                            <section class="col-lg-9">
-                                @Html.TextBox("txtEmail", "User name")
-                            </section>
-                        </div>
-                        <div class="row">
-                            <section class="col-lg-3">
-                                Branch
-                            </section>
-                            <section class="col-lg-9">
-                                @Html.DropDownList("ddlBrnch", New SelectList(brnchObj, "Key", "Value"), "- Please select your branch -")
-                            </section>
-                        </div>
-                        <div class="row">
-                            <section class="col-lg-3">
-                                Depertment
-                            </section>
-                            <section class="col-lg-9">
-                                @Html.DropDownList("ddlDept", New SelectList(deptObj, "Key", "Value"), "- Please select your depertment -")
-                            </section>
-                        </div>
-                        <div class="row">
-                            <section class="col-lg-3">
-                                Designation
-                            </section>
-                            <section class="col-lg-9">
-                                @Html.DropDownList("ddlDesig", New SelectList(desigObj, "Key", "Value"), "- Please select your designation -")
-                            </section>
-                        </div>
+                        @*Dim obj = New With {.id = item}
+                        @Html.Action("userDetails", "users", New With {.id = item})*@
                     </div>
                     <!-- /.card-body -->
                     <div Class="card-footer clearfix">

@@ -12,37 +12,32 @@ $(document).ready(function () {
 
     $(".user-block").on("click", function () {
         var uid = $(this).find("#hdnID").val();
-        var url = api + "users";
-
+        var url = "/users/userDetails";
+        console.log(uid);
+        console.log(url)
         $.ajax({
             url: url,
             data: {id:uid},
             type: 'GET',
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
-            beforeSend: function (xhr) { xhr.setRequestHeader('token', getCookie("APIKey")); },
+            dataType: 'html',
+            contentType: 'text/html',
             success: function (result) {
-                //console.log(result);
-                $(".user-detail").find("#txtName").val(result.Name);
-                $(".user-detail").find("#txtEmail").val(result.Email);
-                $(".user-detail").find("#ddlBrnch").val(result.Branch);
-                $(".user-detail").find("#ddlDept").val(result.Depertment);
-                $(".user-detail").find("#ddlDesig").val(result.Designation);
+                $(".user-detail").html(result);
+                console.log(result);
+                //$("#tabContSubUser").html("");
+                //var childUsers = "";
 
-                $("#tabContSubUser").html("");
-                var childUsers = "";
-
-                $.each(result.SubOrdinates, function (k, v) {
+                //$.each(result.SubOrdinates, function (k, v) {
                    
-                    childUsers = childUsers + 
-                        "<div class='user-block user-block-x' title='"+k+"'><table border='0'><tr> <td rowspan='3'><img src='img/userImg/"+k+".jpg' onerror='loadDefaultImg(this);' /> </td>             <td>                 <input type='hidden' id='hdnID' value='"+k+"' />                 <span class='usr-Name'>"+v+"</span>             </td>         </tr>         <tr>             <td><div class='userDesig'></div></td>         </tr>         <tr>             <td><div class='userDept'></div></td>         </tr>     </table> </div>"
-                });
+                //    childUsers = childUsers + 
+                //        "<div class='user-block user-block-x' title='"+k+"'><table border='0'><tr> <td rowspan='3'><img src='img/userImg/"+k+".jpg' onerror='loadDefaultImg(this);' /> </td>             <td>                 <input type='hidden' id='hdnID' value='"+k+"' />                 <span class='usr-Name'>"+v+"</span>             </td>         </tr>         <tr>             <td><div class='userDesig'></div></td>         </tr>         <tr>             <td><div class='userDept'></div></td>         </tr>     </table> </div>"
+                //});
 
-                $("#tabContSubUser").html(childUsers);
+                //$("#tabContSubUser").html(childUsers);
 
             },
             error: function (error) {
-
+                console.log(error);
             }
         });
 

@@ -45,8 +45,9 @@ Namespace Controllers
         Function userDetails(id As String) As ActionResult
             Dim param As New Dictionary(Of String, String)
             Dim userObj
+            Dim retval As New Dictionary(Of String, Object)
 
-            Dim anon = New With {.id = "Peter"}
+            'Dim anon = New With {.id = "Peter"}
 
 
             Try
@@ -54,8 +55,37 @@ Namespace Controllers
                 param.Add("id", id)
                 userObj = System.Web.Helpers.Json.Decode(ApiCaller.GetRequest("users", "GetValue", param))
 
-                ViewBag("userObj") = userObj
-                Return View(ViewBag)
+                ViewData("userid") = id
+
+                ViewData("about") = userObj.about
+                ViewData("active") = userObj.active
+                ViewData("address") = userObj.address
+                ViewData("city") = userObj.city
+                ViewData("email") = userObj.email
+                ViewData("name") = userObj.name
+                ViewData("phone") = userObj.phone
+                ViewData("country") = userObj.country
+
+                param("id") = userObj.boss
+                ViewData("boss") = System.Web.Helpers.Json.Decode(ApiCaller.GetRequest("users", "GetValue", param)).Name
+
+                param("id") = userObj.depertment
+                ViewData("dept") = System.Web.Helpers.Json.Decode(ApiCaller.GetRequest("depertment", "GetValue", param)).Name
+
+                param("id") = userObj.designation
+                ViewData("desig") = System.Web.Helpers.Json.Decode(ApiCaller.GetRequest("designation", "GetValue", param)).Name
+
+                param("id") = userObj.branch
+                ViewData("branch") = userObj.branch ' System.Web.Helpers.Json.Decode(ApiCaller.GetRequest("branch", "GetValue", param)).Name
+
+                param("id") = userObj.company
+                ViewData("company") = userObj.company ' System.Web.Helpers.Json.Decode(ApiCaller.GetRequest("entity", "GetValue", param)).Name
+
+
+
+
+
+                Return View()
             Catch ex As Exception
 
             End Try
