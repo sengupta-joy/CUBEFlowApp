@@ -5,44 +5,31 @@
 
 var api = "";
 
-$(document).ready(function () {
-
-    api = getCookie("APIUrl");
-    
-
-    $(".user-block").on("click", function () {
-        var uid = $(this).find("#hdnID").val();
-        var url = "/users/userDetails";
-        console.log(uid);
-        console.log(url)
-        $.ajax({
-            url: url,
-            data: {id:uid},
-            type: 'GET',
-            dataType: 'html',
-            contentType: 'text/html',
-            success: function (result) {
-                $(".user-detail").html(result);
-                console.log(result);
-                //$("#tabContSubUser").html("");
-                //var childUsers = "";
-
-                //$.each(result.SubOrdinates, function (k, v) {
-                   
-                //    childUsers = childUsers + 
-                //        "<div class='user-block user-block-x' title='"+k+"'><table border='0'><tr> <td rowspan='3'><img src='img/userImg/"+k+".jpg' onerror='loadDefaultImg(this);' /> </td>             <td>                 <input type='hidden' id='hdnID' value='"+k+"' />                 <span class='usr-Name'>"+v+"</span>             </td>         </tr>         <tr>             <td><div class='userDesig'></div></td>         </tr>         <tr>             <td><div class='userDept'></div></td>         </tr>     </table> </div>"
-                //});
-
-                //$("#tabContSubUser").html(childUsers);
-
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
 
 
+function user_block_click() {
+    var uid = $(this).find("#hdnID").val();
+    var url = "/users/userDetails";
+  
+    $.ajax({
+        url: url,
+        data: { id: uid },
+        type: 'GET',
+        dataType: 'html',
+        contentType: 'text/html',
+        success: function (result) {
+            $(".user-detail").html(result);
+            user_details();
+            $(".user-block").click(user_block_click);
+           
+        },
+        error: function (error) {
+            console.log(error);
+        }
     });
+}
+
+function user_details() {
     var users = $(".user-block-x");
     $.each(users, function (i, v) {
         var uid = $(v).find("#hdnID").val();
@@ -100,6 +87,17 @@ $(document).ready(function () {
             }
         });
     });
+}
+
+
+$(document).ready(function () {
+
+    api = getCookie("APIUrl");
+    
+
+    $(".user-block").click(user_block_click);
+
+    user_details();
 
 
 });

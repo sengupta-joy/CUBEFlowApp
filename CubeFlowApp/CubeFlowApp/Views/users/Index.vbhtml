@@ -45,6 +45,22 @@ End Code
         border-top-right-radius: 5px;
         /*width:98%;*/
     }
+    .users-name-header {
+        font-size: 16pt;
+        font-weight: bold;
+        color: #0e65d2;
+    }
+    .users-about {
+        font-size: 11pt;
+        color: gray;
+    }
+
+    .user-detail-card
+    {
+        width:90%;
+    }
+
+
 </style>
 <script src="~/Scripts/users.js"></script>
 <section class="content">

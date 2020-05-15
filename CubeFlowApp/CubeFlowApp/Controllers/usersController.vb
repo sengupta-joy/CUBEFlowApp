@@ -46,6 +46,7 @@ Namespace Controllers
             Dim param As New Dictionary(Of String, String)
             Dim userObj
             Dim retval As New Dictionary(Of String, Object)
+            Dim bossDetails = New With {.key = "", .value = ""}
 
             'Dim anon = New With {.id = "Peter"}
 
@@ -68,6 +69,10 @@ Namespace Controllers
 
                 param("id") = userObj.boss
                 ViewData("boss") = System.Web.Helpers.Json.Decode(ApiCaller.GetRequest("users", "GetValue", param)).Name
+                bossDetails.key = userObj.boss.ToString()
+                bossDetails.value = ViewData("boss").ToString()
+
+                ViewBag.bossDetails = bossDetails
 
                 param("id") = userObj.depertment
                 ViewData("dept") = System.Web.Helpers.Json.Decode(ApiCaller.GetRequest("depertment", "GetValue", param)).Name
